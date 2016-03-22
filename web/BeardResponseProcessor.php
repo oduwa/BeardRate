@@ -15,7 +15,7 @@ ParseClient::initialize('f2RzLQGAeVldCdXamBL6j78BvIAoY0bbLyU6grgA', 'kUQylDfN3uF
       $res = 0;
     }
     else{
-      $res = $_GET["beardLevel"];
+      $res = intval($_GET["beardLevel"]);
     }
 
     $newResult = new ParseObject("Result");
@@ -24,16 +24,16 @@ ParseClient::initialize('f2RzLQGAeVldCdXamBL6j78BvIAoY0bbLyU6grgA', 'kUQylDfN3uF
     $newResult->save();
 
     // navigate to next option
-    if($lastIndex < 2){
+    if($lastIndex < 5){
       $nextIndex = $lastIndex + 1;
-      header('Location: index.php?i=' . $nextIndex);
+      header('Location: BeardRate.php?i=' . $nextIndex);
     }
     else{
       header('Location: Thanks.php');
     }
   }
   else{
-    header('Location: index.php');
+    header('Location: BeardRate.php');
   }
 
 ?>

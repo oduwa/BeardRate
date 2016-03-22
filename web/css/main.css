@@ -7,3 +7,12 @@ h1 {
   margin-left: 10%;
   margin-right: 10%;
 }
+
+.center-button{
+  margin-left: 40%;
+  margin-right: 40%;
+  margin-top: 40%;
+  margin-bottom: 40%;
+  width: 20%;
+  height: 20%;
+}

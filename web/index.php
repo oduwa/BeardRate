@@ -1,49 +1,61 @@
-<?php
-  $index = 1;
-
-  if(isset($_GET["i"])){
-    $index = $_GET["i"];
-  }
-
-  $beardLevel = rand(1,3);
-
-?>
-
 <html>
   <head>
     <?php include 'includes.php';?>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <title>BEARD-RATE </title>
   </head>
 
   <body>
 
-    <!-- IMAGES -->
-    <div class="row">
-      <div class="col-md-6">
-          <a id="shaved-link" class="thumbnail" href="#">
-              <img class="img-responsive" src=<?php echo '"images/face_' . $index . '_shaved.png"'?> alt="" width="320" height="480">
-          </a>
-      </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
 
-      <div class="col-md-6">
-          <a id="bearded-link" class="thumbnail" href="#">
-              <img class="img-responsive" src=<?php echo '"images/face_' . $index . '_beard_' . $beardLevel . '.png"'?> alt="" width="320" height="480">
-          </a>
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">BeardRate</h4>
+          </div>
+          <div class="modal-body">
+            <p>BeardRate wants to find out if you'd rather bang baby-faced dudes,
+            straight up grizzly bears or guys with facial hair somewhere in between.</p><br />
+            <p>BeardRate shows you a picture of a shaved guy and the same guy with a
+            randomly selected level of face scruff. Then you choose. </p><br />
+            <p><h4>How awesome is that?</h4>
+            Pretty fucking awesome, that's how.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" onClick="no()" class="btn btn-default" data-dismiss="modal">I'm a pussy</button>
+            <button type="button" onClick="yes()" class="btn btn-primary" data-dismiss="modal">Show me some dudes</button>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <script>
-      $(document).ready(function() {
+    <div id="buttonDiv" style="display:none">
+      <button type="button" onClick="tryAgain()" class="btn btn-primary center-button">Am I a pussy?</button>
+    </div>
 
-        $("#shaved-link").click(function() {
-          window.location.href = 'BeardResponseProcessor.php?choice=0&currentIndex=' + <?php echo($index); ?>;
-        });
-
-        $("#bearded-link").click(function() {
-          window.location.href = 'BeardResponseProcessor.php?choice=1&beardLevel=' + <?php echo($beardLevel); ?> + '&currentIndex=' + <?php echo($index); ?>;
-        });
-
+    <script type="text/javascript">
+      $(window).load(function(){
+          $('#myModal').modal('show');
       });
+
+      function no(){
+        $('#buttonDiv').show();
+      }
+
+      function yes(){
+        window.location.href = 'BeardRate.php';
+      }
+
+      function tryAgain(){
+        $('#myModal').modal('show');
+      }
     </script>
 
   </body>
