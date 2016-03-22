@@ -8,3 +8,6 @@
 
 <!-- Custom CSS -->
 <link href="css/thumbnail-gallery.css" rel="stylesheet">
+
+<!-- App CSS -->
+<link href="css/main.css" rel="stylesheet">
